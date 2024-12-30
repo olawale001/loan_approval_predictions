@@ -35,3 +35,64 @@ fig_gender = px.bar(
     title='Gender Distribution'
 )
 fig_gender.show()
+
+married_counts = df['Married'].value_counts()
+fig_married = px.bar(
+    married_counts,
+    x=married_counts.index,
+    y=married_counts.values,
+    title='Maritial Count Distribution'
+)
+fig_married.show()
+
+education_counts = df['Education'].value_counts()
+fig_education = px.bar(
+    education_counts,
+    education_counts.index,
+    y=education_counts.values,
+    title='Education Distribution'
+)
+fig_education.show()
+
+self_employed_count = df['Self_Employed'].value_counts()
+fig_self_employed = px.bar(
+    self_employed_count,
+    x=self_employed_count.index,
+    y=self_employed_count.values,
+    title='Self Employed Distribution'
+)
+fig_self_employed.show()
+
+fig_applicant_income = px.histogram(
+    df,
+    x='ApplicantIncome',
+    title='Applicant Income Distribution'
+)
+fig_applicant_income.show()
+
+fig_income = px.box(
+    df,
+    x='Loan_Status',
+    y='ApplicantIncome',
+    color='Loan_Status',
+    title='Loan Status vs. ApplicantIncome'
+)
+fig_income.show()
+
+Q1 = df['ApplicantIncome'].quantile(0.25)
+Q3 = df['ApplicantIncome'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+df[(df['ApplicantIncome'] >= lower_bound) & (df['ApplicantIncome'] <= upper_bound)]
+
+fig_coapplicant_income = px.box(
+    df,
+    x='Loan_Status',
+    y='CoapplicantIncome',
+    color='Loan_Status',
+    title='Loan Status vs. CoapplicantIncome'
+)
+fig_applicant_income.show()
