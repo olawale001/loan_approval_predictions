@@ -34,32 +34,34 @@ fig_gender = px.bar(
     x=df['Gender'].value_counts().index,
     y=df['Gender'].value_counts().values,
     title='Gender Distribution',
-    # labels={'x': 'Gender', 'y': 'Count'}
+    labels={'x': 'Gender', 'y': 'Count'}
 )
-
+fig_gender.show()
 
 fig_married = px.bar(
     x=df['Married'].value_counts().index,
     y=df['Married'].value_counts().values,
     title='Marital Status Distribution',
-    # labels={'x': 'Marital Status', 'y': 'Count'}
+    labels={'x': 'Marital Status', 'y': 'Count'}
 )
+fig_married.show()
 
 
 fig_education = px.bar(
     x=df['Education'].value_counts().index,
     y=df['Education'].value_counts().values,
     title='Education Distribution',
-    # labels={'x': 'Education', 'y': 'Count'}
+    labels={'x': 'Education', 'y': 'Count'}
 )
-
+fig_education.show()
 
 fig_income_hist = px.histogram(
     df,
     x='ApplicantIncome',
     title='Applicant Income Distribution',
-    # labels={'x': 'Applicant Income'}
+    labels={'x': 'Applicant Income'}
 )
+fig_income_hist.show()
 
 
 fig_income_box = px.box(
@@ -68,9 +70,9 @@ fig_income_box = px.box(
     y='ApplicantIncome',
     color='Loan_Status',
     title='Loan_Status vs ApplicantIncome',
-    # labels={'x': 'Loan Status', 'y': 'Applicant Income'}
+    labels={'x': 'Loan Status', 'y': 'Applicant Income'}
 )
-
+fig_income_box
 
 Q1 = df['ApplicantIncome'].quantile(0.25)
 Q3 = df['ApplicantIncome'].quantile(0.75)
@@ -113,7 +115,7 @@ model = SVC(random_state=42)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
-# print(y_pred)
+print(y_pred)
 
 X_test_df = pd.DataFrame(X_test, columns=X_test.columns)
 X_test_df['Loan_Status_Predicted'] = y_pred
